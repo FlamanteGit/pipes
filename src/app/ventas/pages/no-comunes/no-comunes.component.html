@@ -1,0 +1,85 @@
+<h1>Pipes no tan comunes</h1>
+<p>Pipes incluidos en Angular - Usualmente en el modulo de Common Module</p>
+<button
+  pButton
+  type="button"
+  label="Documentación oficial"
+  icon="pi pi-book"
+  onClick="window.open('https://angular.io/api?type=pipe','blank');"
+  class="p-button-link"
+></button>
+<br />
+<br />
+
+<div class="grid">
+  <div class="col-6">
+    <p-fieldset legend="i18nSelect Pipe" [toggleable]="true" [collapsed]="true">
+      <p>
+        Saludos {{ cliente.nombre }}, es un placer
+        {{ cliente.genero | i18nSelect : invitacionMap }} a nuestro evento
+      </p>
+      <button
+        pButton
+        type="button"
+        label="Cambiar cliente"
+        icon="pi pi-replay"
+        (click)="cambiarCliente()"
+      ></button>
+    </p-fieldset>
+  </div>
+  <div class="col-6">
+    <p-fieldset legend="i18nPlural Pipe" [toggleable]="true" [collapsed]="true">
+      <p>
+        Actualmente
+        {{ clientes.length | i18nPlural : clientesMap }}
+      </p>
+      <button
+        pButton
+        type="button"
+        label="Borrar cliente"
+        class="p-button-danger"
+        icon="pi pi-times"
+        (click)="borrarCliente()"
+      ></button>
+    </p-fieldset>
+  </div>
+
+  <div class="col-6">
+    <p-fieldset legend="Slice Pipe" [toggleable]="true" [collapsed]="true">
+      <b>Original</b>
+      <pre>{{ clientes }}</pre>
+
+      <b>slice : 0</b>
+      <pre>{{ clientes | slice : 0 }}</pre>
+
+      <b>slice : 0 : 2</b>
+      <pre>{{ clientes | slice : 0 : 2 }}</pre>
+
+      <b>slice : 1 : 2</b>
+      <pre>{{ clientes | slice : 1 : 2 }}</pre>
+
+      <b>'fernando' | slice : 0 : 4</b>
+      <pre>{{ "fernando" | slice : 0 : 4 }}</pre>
+    </p-fieldset>
+  </div>
+
+  <div class="col-6">
+    <p-fieldset legend="JSON Pipe" [toggleable]="true" [collapsed]="true">
+      <p>{{ heroes | json }}</p>
+    </p-fieldset>
+  </div>
+
+  <div class="col-6">
+    <p-fieldset legend="keyValue Pipe" [toggleable]="true" [collapsed]="true">
+      <li *ngFor="let item of persona | keyvalue : asIs">
+        {{ item.key }} : {{ item.value }}
+      </li>
+    </p-fieldset>
+  </div>
+
+  <div class="col-6">
+    <p-fieldset legend="Async Pipe" [toggleable]="true" [collapsed]="true">
+      <pre>{{ miObservable | async }}</pre>
+    </p-fieldset>
+  </div>
+</div>
